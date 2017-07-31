@@ -224,7 +224,7 @@ html;
                                 如果你愿意参与本站的维护，请联系我，谢谢！<br/>
                                 本站作者：晨旭<br/>
                                 联系邮箱：m@owo.email<br/>
-                                网站源码：
+                                网站源码：<a href="https://github.com/chenxuuu/kxct_mumber_collection" target="_blank">https://github.com/chenxuuu/kxct_mumber_collection</a>
                             </p>
                         </div>
                         <div class="modal-footer">
