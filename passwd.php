@@ -34,7 +34,7 @@ if($result = mysql_fetch_array($check_query)){
     mysql_query("update user set password='$password_new' where username='$username'");
 //    echo mysql_affected_rows().'<br/>';
     if(mysql_affected_rows()>0)
-        echo '密码修改成功！<br/>';
+        echo '<script>alert("密码修改成功！");window.location.href = "index.php";</script><br/>';
     else
         echo '服务器返回值异常，密码修改失败<br/>';
 	echo '点击此处 <a href="javascript:history.back(-1);">返回</a><br />';

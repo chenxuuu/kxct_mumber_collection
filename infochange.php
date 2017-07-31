@@ -29,7 +29,7 @@ $email = mysql_real_escape_string(htmlspecialchars($_POST['email']));
 
 mysql_query("update user set truename='$truename',year='$year',learn='$learn',work='$work',location='$location',tel='$tel',email='$email' where username='$username'");
 if(mysql_affected_rows()>0)
-    echo '个人资料修改成功！<br/>';
+    echo '<script>alert("个人资料修改成功！");window.location.href = "index.php";</script><br/>';
 else
     echo '服务器返回值异常，个人资料修改失败<br/>';
 echo '点击此处 <a href="javascript:history.back(-1);">返回</a><br />';

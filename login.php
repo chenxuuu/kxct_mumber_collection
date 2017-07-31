@@ -39,7 +39,7 @@ if($result = mysql_fetch_array($check_query)){
 	//登录成功
 	$_SESSION['username'] = $username;
 	$_SESSION['userid'] = $result['uid'];
-	echo '用户 '.$username,' 登陆成功！<br />';
+	echo '<script>alert("用户 '.$username,' 登陆成功！");window.location.href = "index.php";</script><br />';
 	echo '点击此处 <a href="javascript:history.back(-1);">返回</a><br />';
 	exit;
 } else {
