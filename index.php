@@ -173,7 +173,7 @@ html;
                     </div>
 				</li>
 				<li>
-					<a href="#">管理成员（开发中）</a>
+					<a href="manage.php" target="_blank">管理成员（测试中）</a>
 				</li>
 html;
                 }
