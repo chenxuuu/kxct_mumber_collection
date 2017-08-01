@@ -49,9 +49,10 @@ $passwordt = getRandom(6);
 $password = MD5($passwordt);
 $regdate = time();
 $truename = "此用户还未填写信息";
-$sql = "INSERT INTO user(username,password,regdate,truename)VALUES('$username','$password',$regdate,'$truename')";
+$year = 9999;
+$sql = "INSERT INTO user(username,password,regdate,truename,year)VALUES('$username','$password',$regdate,'$truename',$year)";
 if(mysql_query($sql,$conn)){
-	exit('用户添加成功！密码是：'.$passwordt.'<br/>请记下自动生成的密码，以免忘记<br/>点击此处 <a href="javascript:history.back(-1);">返回</a>');
+	exit('用户添加成功！<br/>用户名：'.$username.'，密码是：'.$passwordt.'<br/>请提醒他及时修改本密码<br/>点击此处 <a href="javascript:history.back(-1);">返回</a>');
 } else {
 	echo '抱歉！添加数据失败：',mysql_error(),'<br />';
 	echo '点击此处 <a href="javascript:history.back(-1);">返回</a> 重试';
