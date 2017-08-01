@@ -1,4 +1,5 @@
 <?php
+$page_start_time = microtime();
 session_start();
 if(isset($_SESSION['userid'])){
 	$islogin = 1;
@@ -313,21 +314,49 @@ html;
 			<div class="accordion" id="accordion-345084">
 				<div class="accordion-group">
 					<div class="accordion-heading">
-						 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-345084" href="#accordion-element-577650">功能待定</a>
+						 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-345084" href="#accordion-element-577650">留言板</a>
 					</div>
 					<div id="accordion-element-577650" class="accordion-body collapse">
 						<div class="accordion-inner">
-							功能块...
+                            <div id="SOHUCS" sid="index" ></div> 
+                            <script type="text/javascript"> 
+                            (function(){ 
+                            var appid = 'cyt8Pcehj'; 
+                            var conf = 'prod_876b95911a8924918f53f066291aac0e'; 
+                            var width = window.innerWidth || document.documentElement.clientWidth; 
+                            if (width < 960) { 
+                            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 						</div>
 					</div>
 				</div>
 				<div class="accordion-group">
 					<div class="accordion-heading">
-						 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-345084" href="#accordion-element-795852">功能待定</a>
+						 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-345084" href="#accordion-element-795852">站点信息</a>
 					</div>
-					<div id="accordion-element-795852" class="accordion-body collapse">
+					<div id="accordion-element-795852" class="accordion-body in collapse">
 						<div class="accordion-inner">
-							功能块...
+<?php
+include('conn.php');
+if (!$conn)
+{
+	die('数据库读取失败！' . mysql_error());
+}
+$q = "SELECT * FROM user"; //SQL 查询语句
+$result = mysql_query($q); // 获取数据集
+$user_count = 0;
+while($row = mysql_fetch_array($result))
+{
+    $user_count++;
+}
+echo "网站注册用户总数：".$user_count."人<br/>";
+$page_end_time = microtime();
+$start_time = explode(" ",$page_start_time);
+$end_time = explode(" ",$page_end_time);
+$total_time = $end_time[0] - $start_time[0] + $end_time[1] - $start_time[1];
+$time_cost = sprintf("%s",$total_time);
+echo "页面加载耗时：".$time_cost."秒<br/>";
+echo "服务器当前时间：".date("Y-m-d,H:i:s<br/>");
+?>
 						</div>
 					</div>
 				</div>
