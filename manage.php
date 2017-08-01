@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-<title>科创成员信息</title>
+<title>网站账号管理</title>
 <meta charset="UTF-8"/>
 <?php
 session_start();
@@ -19,6 +19,13 @@ if(isset($_SESSION['userid'])){
 }
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js" /></script>
+<link rel="stylesheet" href="css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/pace.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/pace.css"/>
 <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
@@ -66,5 +73,10 @@ mysql_close($conn);
 ?>
     </tbody>
 </table>
+<script>
+$(document).ready(function() {
+$('#kxct_list').DataTable();
+} );
+</script>
 </body>
 </html>
