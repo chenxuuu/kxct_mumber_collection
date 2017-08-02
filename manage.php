@@ -60,7 +60,7 @@ while($row = mysql_fetch_array($result))
     "<td>",$row['uid'],"</td>",
     "<td>",$row['username'],"</td>",
     "<td>",date("Y-m-d,H:i:s",$row['regdate']),"</td>",
-    "<td>","<a href='del.php?uid=".$row['uid']."'>删除该用户</a>","</td>",
+    "<td>","<a onclick='delete_confirm(".$row['uid'].")'>删除该用户</a>","</td>",
     "<td>",$row['year'],"</td>",
     "<td>",$row['truename'],"</td>",
     "<td>",$row['tel'],"</td>",
@@ -77,6 +77,13 @@ mysql_close($conn);
 $(document).ready(function() {
 $('#kxct_list').DataTable();
 } );
+function delete_confirm(e)
+{
+    if(confirm("删除是不可恢复的，你确认要删除吗？"))
+    {
+        window.location.href = "del.php?uid="+e;
+    }
+}
 </script>
 </body>
 </html>
