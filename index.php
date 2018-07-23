@@ -131,6 +131,9 @@ html;
                         </div>
                     </div>
 				</li>
+                <li>
+					<a href="e-ink/">纪念挂饰设置</a>
+				</li>
 html;
                 }
                 else
@@ -265,8 +268,8 @@ html;
 				<div class="modal-body" style="text-align:center">
 					<p>
                         <form name="LoginForm" method="post" action="login.php">
-                            用户名：　<input type="text" name="username"/><br/>
-                            密码：　　<input type="password" name="password"/><br/>
+                            用户名或邮箱：　<input type="text" name="username"/><br/>
+                            密码：　　　　　<input type="password" name="password"/><br/>
                             <button type="submit" class="btn btn-info" name="submit">登陆</button>
                         </form>
 					</p>

@@ -28,7 +28,7 @@ if(!isset($_POST['submit'])){
 }
 $username = htmlspecialchars($_POST['username']);
 $password = MD5($_POST['password']);
-if(!preg_match('/^[a-zA-Z0-9]{1,15}$/', $username)){
+if(!preg_match('/^[a-zA-Z0-9@\.]{1,50}$/', $username)){
 	exit('错误：用户名异常。<a href="javascript:history.back(-1);">返回</a>');
 }
 //包含数据库连接文件
@@ -43,7 +43,18 @@ if($result = mysql_fetch_array($check_query)){
 	echo '点击此处 <a href="javascript:history.back(-1);">返回</a><br />';
 	exit;
 } else {
+  $check_query = mysql_query("select * from user where email='$username' and password='$password' limit 1");
+if($result = mysql_fetch_array($check_query)){
+	//登录成功
+	$_SESSION['username'] = $result['username'];
+	$_SESSION['userid'] = $result['uid'];
+	echo '<script>alert("用户 '.$result['username'],' 登陆成功！");window.location.href = "index.php";</script><br />';
+	echo '点击此处 <a href="javascript:history.back(-1);">返回</a><br />';
+	exit;
+} else {
+  
 	exit('登录失败！点击此处 <a href="javascript:history.back(-1);">返回</a> 重试');
+}
 }
 ?>
 </body>
