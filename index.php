@@ -75,7 +75,24 @@ window.location.href = 'http://www.chenxublog.com/explorer.html';</script>
                                 <form name="info" method="post" action="infochange.php">
                                     用户名：$username<br/>
 html;
-                                    echo '账号权限：';if($user_type == 'owner'){echo '站长';}elseif($user_type == 'admin'){echo '管理员';}else{echo '普通成员';}echo '<br/>';
+                                    echo '账号权限：';
+                                    if($user_type == 'owner')
+                                    {
+                                        echo '站长';
+                                    }
+                                    elseif($user_type == 'admin')
+                                    {
+                                        echo '管理员';
+                                    }
+                                    if($user_type == 'normal')
+                                    {
+                                        echo '科创成员';
+                                    }
+                                    else
+                                    {
+                                        echo '普通成员';
+                                    }
+                                    echo '<br/>';
                                     echo <<<html
                                     姓名：<br/>
                                     <input type="text" name="truename" value="$true_name"/><br/>
@@ -240,7 +257,7 @@ html;
 		</div>
 		<div class="span6">
 			<h3>
-                <?php 
+                <?php
                 if($islogin == 1)
                 {
                     if($user_type == 'owner'){echo '站长';}elseif($user_type == 'admin'){echo '管理员';}else{echo '用户';}
@@ -252,12 +269,12 @@ html;
                 }
                 ?><br/>
 			</h3>
-            <?php 
+            <?php
             if($islogin == 0)
             {
                 echo <<<html
             <a id="modal-80092" href="#modal-container-80092" role="button" class="btn btn-primary btn-block" data-toggle="modal">登陆账号</a>
-			
+
 			<div id="modal-container-80092" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-header">
 					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -280,7 +297,7 @@ html;
 			</div>
             <br/>
 			<a id="modal-80091" href="#modal-container-80091" role="button" class="btn btn-block" data-toggle="modal">注册账号</a>
-			
+
 			<div id="modal-container-80091" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-header">
 					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -321,13 +338,13 @@ html;
 					</div>
 					<div id="accordion-element-577650" class="accordion-body collapse">
 						<div class="accordion-inner">
-                            <div id="SOHUCS" sid="index" ></div> 
-                            <script type="text/javascript"> 
-                            (function(){ 
-                            var appid = 'cyt8Pcehj'; 
-                            var conf = 'prod_876b95911a8924918f53f066291aac0e'; 
-                            var width = window.innerWidth || document.documentElement.clientWidth; 
-                            if (width < 960) { 
+                            <div id="SOHUCS" sid="index" ></div>
+                            <script type="text/javascript">
+                            (function(){
+                            var appid = 'cyt8Pcehj';
+                            var conf = 'prod_876b95911a8924918f53f066291aac0e';
+                            var width = window.innerWidth || document.documentElement.clientWidth;
+                            if (width < 960) {
                             window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 						</div>
 					</div>

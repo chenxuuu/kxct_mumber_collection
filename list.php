@@ -8,6 +8,14 @@ session_start();
 if(!isset($_SESSION['userid'])){
     exit('请登录后再看');
 }
+include('conn.php');
+$userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
+$user_query = mysql_query("select * from user where uid=$userid limit 1");
+$row = mysql_fetch_array($user_query);
+$user_type = $row['usr_type'];
+if($user_type=="")
+    exit('<script>alert("你没有该权限");</script>');
 ?>
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,9 +64,9 @@ while($row = mysql_fetch_array($result))
     "<td>",$row['tel'],"</td>",
     "<td>",$row['email'],"</td>",
     "</tr>";
-	
+
 }
-	
+
 mysql_close($conn);
 ?>
     </tbody>

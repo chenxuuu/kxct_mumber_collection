@@ -50,7 +50,7 @@ $password = MD5($passwordt);
 $regdate = time();
 $truename = "此用户还未填写信息";
 $year = 9999;
-$sql = "INSERT INTO user(username,password,regdate,truename,year)VALUES('$username','$password',$regdate,'$truename',$year)";
+$sql = "INSERT INTO user(username,password,regdate,truename,year,usr_type)VALUES('$username','$password',$regdate,'$truename',$year,'normal')";
 if(mysql_query($sql,$conn)){
 	exit('用户添加成功！<br/>用户名：'.$username.'，密码是：'.$passwordt.'<br/>请提醒他及时修改本密码<br/>点击此处 <a href="javascript:history.back(-1);">返回</a>');
 } else {
