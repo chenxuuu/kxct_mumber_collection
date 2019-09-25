@@ -13,8 +13,8 @@ if(isset($_SESSION['userid'])){
     include('../conn.php');
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
-    $user_query = mysql_query("select * from user where uid=$userid limit 1");
-    $row = mysql_fetch_array($user_query);
+    $user_query = mysqli_query($conn,"select * from user where uid=$userid limit 1");
+    $row = mysqli_fetch_array($user_query,MYSQLI_ASSOC);
     $user_type = $row['usr_type']; //建表的时候打错了，而且懒得改了。。。
 }else
 {
@@ -35,9 +35,9 @@ if($user_type != "owner")
 	exit(0);
 }
 $q = "SELECT * FROM e_ink_log ORDER BY uid DESC"; //SQL 查询语句
-$result = mysql_query($q); // 获取数据集
+$result = mysqli_query($conn,$q); // 获取数据集
 $temp_count=0;
-while($row = mysql_fetch_array($result))
+while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
 {
 	if($temp_count>2000){break;}else{$temp_count++;}
 	echo "时间：".$row["time"].",imei：".$row["imei"].",返回类型：".$row["type"].",返回数据：".$row["data"]."<br/>";

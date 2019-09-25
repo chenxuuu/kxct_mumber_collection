@@ -15,9 +15,9 @@ if(isset($_SESSION['userid'])){
     exit('你登陆了吗？');
 }
 
-$imei = mysql_real_escape_string(htmlspecialchars($_POST['imei']));
-mysql_query("update user set eink_imei='$imei' where uid=$userid");
-if(mysql_affected_rows()>0)
+$imei = mysqli_real_escape_string($conn,htmlspecialchars($_POST['imei']));
+mysqli_query($conn,"update user set eink_imei='$imei' where uid=$userid");
+if(mysqli_affected_rows($conn)>0)
     echo '<script>alert("imei修改成功！");window.location.href = "index.php";</script><br/>';
 else
     echo '服务器返回值异常，imei修改失败<br/>';

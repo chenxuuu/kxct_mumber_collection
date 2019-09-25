@@ -1,9 +1,8 @@
 <?php
-$conn = @mysql_connect("localhost","root","root");
-if (!$conn){
-	die("连接数据库失败：" . mysql_error());
+$conn = @mysqli_connect("localhost","root","root","test");
+if (mysqli_connect_errno($conn)){
+	die("连接数据库失败：" . mysqli_connect_error());
 }
-mysql_select_db("test", $conn);
 
 /*
 CREATE TABLE `user` (

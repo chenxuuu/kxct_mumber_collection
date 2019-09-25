@@ -21,8 +21,8 @@ if(isset($_SESSION['userid'])){
     include('../conn.php');
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
-    $user_query = mysql_query("select * from user where uid=$userid limit 1");
-    $row = mysql_fetch_array($user_query);
+    $user_query = mysqli_query($conn,"select * from user where uid=$userid limit 1");
+    $row = mysqli_fetch_array($user_query,MYSQLI_ASSOC);
     $user_type = $row['usr_type']; //建表的时候打错了，而且懒得改了。。。
     $true_name = $row['truename'];
     $email = $row['email'];
@@ -186,9 +186,9 @@ html;
 						imei值为<?php echo $imei;?>模块的历史刷新记录：<br>
 						<?php
 						$q = "SELECT * FROM e_ink_log where imei=$imei ORDER BY uid DESC"; //SQL 查询语句
-						$result = mysql_query($q); // 获取数据集
+						$result = mysqli_query($conn,$q); // 获取数据集
 						$temp_count=0;
-						while($row = mysql_fetch_array($result))
+						while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
 						{
 							if($temp_count>500){break;}else{$temp_count++;}
 							echo "时间：".$row["time"].",imei：".$row["imei"].",返回类型：".$row["type"].",返回数据：".$row["data"]."<br/>";

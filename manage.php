@@ -8,8 +8,8 @@ session_start();
 if(isset($_SESSION['userid'])){
     include('conn.php');
     $userid = $_SESSION['userid'];
-    $user_query = mysql_query("select * from user where uid=$userid limit 1");
-    $row = mysql_fetch_array($user_query);
+    $user_query = mysqli_query($conn,"select * from user where uid=$userid limit 1");
+    $row = mysqli_fetch_array($user_query,MYSQLI_ASSOC);
     $user_type = $row['usr_type']; //建表的时候打错了，而且懒得改了。。。
     if($user_type != 'owner' && $user_type != 'admin')
         exit('你没有管理用户的权限，另外你是怎么找到这个页面的？快点忘掉！');
@@ -47,14 +47,14 @@ if(isset($_SESSION['userid'])){
 include('conn.php');
 if (!$conn)
 {
-	die('数据库读取失败！' . mysql_error());
+	die('数据库读取失败！' . mysqli_error($conn));
 }
 
 $q = "SELECT * FROM user"; //SQL 查询语句
 
-$result = mysql_query($q); // 获取数据集
+$result = mysqli_query($conn,$q); // 获取数据集
 
-while($row = mysql_fetch_array($result))
+while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
 {
     echo "<tr>",
     "<td>",$row['uid'],"</td>",
@@ -66,10 +66,10 @@ while($row = mysql_fetch_array($result))
     "<td>",$row['tel'],"</td>",
     "<td>",$row['email'],"</td>",
     "</tr>";
-	
+
 }
-	
-mysql_close($conn);
+
+mysqli_close($conn);
 ?>
     </tbody>
 </table>

@@ -19,16 +19,16 @@ if(isset($_SESSION['userid'])){
 if(!isset($_POST['submit'])){
 	exit('非法访问!');
 }
-$truename = mysql_real_escape_string(htmlspecialchars($_POST['truename']));
-$year = mysql_real_escape_string(htmlspecialchars($_POST['year']));
-$learn = mysql_real_escape_string(htmlspecialchars($_POST['learn']));
-$work = mysql_real_escape_string(htmlspecialchars($_POST['work']));
-$location = mysql_real_escape_string(htmlspecialchars($_POST['location']));
-$tel = mysql_real_escape_string(htmlspecialchars($_POST['tel']));
-$email = mysql_real_escape_string(htmlspecialchars($_POST['email']));
+$truename = mysqli_real_escape_string(htmlspecialchars($conn,$_POST['truename']));
+$year = mysqli_real_escape_string(htmlspecialchars($conn,$_POST['year']));
+$learn = mysqli_real_escape_string(htmlspecialchars($conn,$_POST['learn']));
+$work = mysqli_real_escape_string(htmlspecialchars($conn,$_POST['work']));
+$location = mysqli_real_escape_string(htmlspecialchars($conn,$_POST['location']));
+$tel = mysqli_real_escape_string(htmlspecialchars($conn,$_POST['tel']));
+$email = mysqli_real_escape_string(htmlspecialchars($conn,$_POST['email']));
 
-mysql_query("update user set truename='$truename',year='$year',learn='$learn',work='$work',location='$location',tel='$tel',email='$email' where username='$username'");
-if(mysql_affected_rows()>0)
+mysqli_query($conn,"update user set truename='$truename',year='$year',learn='$learn',work='$work',location='$location',tel='$tel',email='$email' where username='$username'");
+if(mysqli_affected_rows($conn)>0)
     echo '<script>alert("个人资料修改成功！");window.location.href = "index.php";</script><br/>';
 else
     echo '服务器返回值异常，个人资料修改失败<br/>';

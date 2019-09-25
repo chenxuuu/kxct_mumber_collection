@@ -34,8 +34,8 @@ if(!preg_match('/^[a-zA-Z0-9@\.]{1,50}$/', $username)){
 //包含数据库连接文件
 include('conn.php');
 //检测用户名及密码是否正确
-$check_query = mysql_query("select uid from user where username='$username' and password='$password' limit 1");
-if($result = mysql_fetch_array($check_query)){
+$check_query = mysqli_query($conn,"select uid from user where username='$username' and password='$password' limit 1");
+if($result = mysqli_fetch_array($check_query,MYSQLI_ASSOC)){
 	//登录成功
 	$_SESSION['username'] = $username;
 	$_SESSION['userid'] = $result['uid'];
@@ -43,8 +43,8 @@ if($result = mysql_fetch_array($check_query)){
 	echo '点击此处 <a href="javascript:history.back(-1);">返回</a><br />';
 	exit;
 } else {
-  $check_query = mysql_query("select * from user where email='$username' and password='$password' limit 1");
-if($result = mysql_fetch_array($check_query)){
+  $check_query = mysqli_query($conn,"select * from user where email='$username' and password='$password' limit 1");
+if($result = mysqli_fetch_array($check_query,MYSQLI_ASSOC)){
 	//登录成功
 	$_SESSION['username'] = $result['username'];
 	$_SESSION['userid'] = $result['uid'];
@@ -52,7 +52,7 @@ if($result = mysql_fetch_array($check_query)){
 	echo '点击此处 <a href="javascript:history.back(-1);">返回</a><br />';
 	exit;
 } else {
-  
+
 	exit('登录失败！点击此处 <a href="javascript:history.back(-1);">返回</a> 重试');
 }
 }

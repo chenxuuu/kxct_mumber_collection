@@ -15,9 +15,9 @@ if(isset($_SESSION['userid'])){
     exit('你登陆了吗？');
 }
 
-$pic = mysql_real_escape_string(htmlspecialchars($_POST['pic']));
-mysql_query("update user set eink_pic='$pic' ,eink_set='pic' where uid=$userid");
-if(mysql_affected_rows()>0)
+$pic = mysqli_real_escape_string($conn,htmlspecialchars($_POST['pic']));
+mysqli_query($conn,"update user set eink_pic='$pic' ,eink_set='pic' where uid=$userid");
+if(mysqli_affected_rows($conn)>0)
     echo '<script>alert("pic修改成功！");window.location.href = "index.php";</script><br/>';
 else
     echo '服务器返回值异常，pic修改失败<br/>';

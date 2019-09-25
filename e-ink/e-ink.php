@@ -11,8 +11,8 @@ if(isset($_SESSION['userid'])){
     include('../conn.php');
     $userid = $_SESSION['userid'];
     $username = $_SESSION['username'];
-    $user_query = mysql_query("select * from user where uid=$userid limit 1");
-    $row = mysql_fetch_array($user_query);
+    $user_query = mysqli_query($conn,"select * from user where uid=$userid limit 1");
+    $row = mysqli_fetch_array($user_query,MYSQLI_ASSOC);
     $user_type = $row['usr_type']; //建表的时候打错了，而且懒得改了。。。
     $true_name = $row['truename'];
     $email = $row['email'];

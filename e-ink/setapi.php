@@ -15,9 +15,9 @@ if(isset($_SESSION['userid'])){
     exit('你登陆了吗？');
 }
 
-$api = mysql_real_escape_string(htmlspecialchars($_POST['api']));
-mysql_query("update user set eink_api='$api' ,eink_set='api' where uid=$userid");
-if(mysql_affected_rows()>0)
+$api = mysqli_real_escape_string($conn,htmlspecialchars($_POST['api']));
+mysqli_query($conn,"update user set eink_api='$api' ,eink_set='api' where uid=$userid");
+if(mysqli_affected_rows($conn)>0)
     echo '<script>alert("api修改成功！");window.location.href = "index.php";</script><br/>';
 else
     echo '服务器返回值异常，api修改失败<br/>';
